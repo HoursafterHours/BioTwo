@@ -1,0 +1,37 @@
+﻿@model List<BioTwo.Models.Showing>
+
+<style>
+    td {
+        padding: 10px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        padding: 10px;
+    }
+</style>
+
+<table>
+    <thead>
+        <tr>
+            <th>Movie</th>
+            <th>Show Time</th>
+            <th>Salon</th>
+            <th></th> 
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var showing in Model)
+        {
+            <tr>
+                <td>@showing.Movie.Title</td>
+                <td>@showing.ShowingTime.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@showing.Salon.Name</td>
+                <td>
+                    <a asp-controller="Showing" asp-action="SelectSeat" asp-route-id="@showing.ShowingID" class="btn btn-primary">Available Seats</a>
+                    <a asp-controller="Movie" asp-action="Details" asp-route-id="@showing.Movie.MovieID" class="btn btn-info">Movie Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

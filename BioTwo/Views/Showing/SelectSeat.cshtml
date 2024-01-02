@@ -1,0 +1,49 @@
+﻿@model BioTwo.ViewModel.SelectSeatViewModel
+
+
+
+<h2>Select Seats for @Model.Showing.Movie.Title</h2>
+
+<p>Show Time: @Model.Showing.ShowingTime.ToString("yyyy-MM-dd HH:mm")</p>
+<p>Salon: @Model.Showing.Salon.Name</p>
+
+<form method="post" asp-controller="Booking" asp-action="Create" asp-route-showingId="@Model.Showing.ShowingID">
+    <div>
+        <label>Select Seats:</label>
+
+        
+        <table>
+            <tbody>
+                @for (int i = 0; i < Model.AvailableSeats.Count; i += Model.Showing.Salon.SeatPerRow)
+                {
+                    <tr>
+                        @for (int j = 0; j < Model.Showing.Salon.SeatPerRow && (i + j) < Model.AvailableSeats.Count; j++)
+                        {
+                            var seatNumber = Model.AvailableSeats[i + j];
+                            <td>
+                                <label>
+                                    <input type="checkbox" name="selectedSeats" value="@seatNumber" />
+                                    Seat @seatNumber
+                                </label>
+                            </td>
+                        }
+
+                        
+                       </tr>
+                }
+            </tbody>
+        </table>
+
+        
+        <div>
+            <label for="CustomerName">Your Name:</label>
+            <input type="text" name="CustomerName" required />
+
+            <label for="CustomerEmail">Your Email:</label>
+            <input type="email" name="CustomerEmail" required />
+        </div>
+
+       
+        <button type="submit" class="btn btn-success">Book Selected Seats</button>
+    </div>
+</form>

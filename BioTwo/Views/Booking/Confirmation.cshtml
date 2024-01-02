@@ -1,0 +1,20 @@
+﻿@model BioTwo.Models.Booking
+
+<h2>Booking Confirmation</h2>
+
+<p>Booking Number: @Model.BookingNr</p>
+<p>Customer Name: @Model.CustomerName</p>
+<p>Customer Email: @Model.CustomerEmail</p>
+<p>Show: @Model.Showing.Movie.Title</p>
+<p>Show Time: @Model.Showing.ShowingTime.ToString("yyyy-MM-dd HH:mm")</p>
+<p>Salon: @Model.Showing.Salon.Name</p>
+<p>Seat Number: @Model.SeatNumber</p>
+<p>Movie Price: @(Model.Showing.Movie.Price.HasValue ? Model.Showing.Movie.Price.Value.ToString("C") : "Not available")</p>
+<p>Movie Length: @Model.Showing.Movie.Length minutes</p>
+
+<p>Thank you for your booking!</p>
+
+<a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back to Home</a>
+
+
+

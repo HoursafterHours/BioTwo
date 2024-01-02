@@ -1,0 +1,36 @@
+﻿@model List<BioTwo.Models.Salon>
+
+<h2>Salons</h2>
+<style>
+
+    td {
+        padding: 10px;
+    }
+
+
+    th {
+        background-color: #f2f2f2;
+        padding: 10px;
+    }
+</style>
+<table>
+    <thead>
+        <tr>
+            
+            <th>Name</th>
+            <th>Seat Count</th>
+            <th>Seat Per Row</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var salon in Model)
+        {
+            <tr>
+               
+                <td>@salon.Name</td>
+                <td>@salon.SeatCount</td>
+                <td>@salon.SeatPerRow</td>
+            </tr>
+        }
+    </tbody>
+</table>

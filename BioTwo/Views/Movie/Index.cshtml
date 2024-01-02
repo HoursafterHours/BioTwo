@@ -1,0 +1,36 @@
+﻿@model List<BioTwo.Models.Movie>
+
+<h2>Movies</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Length</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in Model)
+        {
+            <tr>
+                
+                <td>@movie.Title</td>
+                <td>@movie.Genre</td>
+                <td>@movie.Length</td>
+                <td>@movie.Price</td>
+                <td>@movie.Description</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@movie.MovieID">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@movie.MovieID">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@movie.MovieID">Delete</a>
+                    <a asp-action="Create" asp-route-id="@movie.MovieID">Add</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
